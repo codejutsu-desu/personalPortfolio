@@ -1,18 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { device } from '../globalHelpers';
-import TopPeak from '../assets/peak1.svg';
-import BottomPeak from '../assets/peak2.svg';
-import sanityClient from '../client.js';
-import imageUrlBuilder from '@sanity/image-url';
-import { useInView } from 'react-intersection-observer';
-import { AnimatePresence, motion } from 'framer-motion';
-import { FaArrowUp, FaArrowDown, FaPlay } from 'react-icons/fa';
-
-const builder = imageUrlBuilder(sanityClient);
-function urlFor(source) {
-  return builder.image(source);
-}
+import React from "react";
+import styled from "styled-components";
+import { device } from "../globalHelpers";
+import iTravelImage from "./iTravel.png";
+import alHamra from "./alHamra.png";
+import peak1 from "../assets/peak1.svg";
+import peak2 from "../assets/peak2.svg";
 
 const Section = styled.div`
   position: relative;
@@ -121,32 +113,11 @@ const LineBreak = styled.div`
   bottom: 0;
   width: 100%;
 `;
-const ShowContainer = styled.a`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-  z-index: 50;
-  color: #fff;
-  font-family: MontserratExtraBold;
-  font-weight: 600;
-  text-decoration: none;
-  margin: 1em;
-  & svg path {
-    fill: #fff;
-  }
-  &:hover {
-    color: #55bdca;
-    & svg path {
-      fill: #55bdca;
-    }
-  }
-`;
+
 const PreviewContainer = styled.div`
   display: flex;
   justify-content: center;
-  flex: 1;
+  flex: 1.5;
   max-width: 800px;
   position: relative;
 `;
@@ -157,156 +128,88 @@ const Preview = styled.img`
   max-width: 665px;
   max-height: 466px;
 `;
-const PlayBtn = styled(FaPlay)`
-  position: absolute;
-  margin: auto;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  text-align: center;
-  display: ${({ display }) => display};
-  z-index: 50;
-  &:hover {
-    fill: #55bdca;
-  }
-`;
 const Projects = () => {
-  const [projects, setProjects] = useState(null);
-  const [projectsToShow, setProjectsToShow] = useState(null);
-  const [showMore, setShowMore] = useState(false);
-  const [imageState, setImageState] = useState(null);
-  const [playIcons, setPlayIcons] = useState(null);
-
-  const [projectsRef, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.5,
-  });
-  const motionProps = {
-    initial: { x: '-100vw' },
-    animate: { x: 0 },
-    exit: { x: '-100vw' },
-    transition: {
-      type: 'spring',
-      damping: 13,
-      stiffness: 50,
-      duration: 1.5,
-    },
-  };
-
-  const changeImage = (e, index) => {
-    if (e.type === 'click') {
-      setPlayIcons({ ...playIcons, ...{ [index]: { state: false } } });
-      setImageState({
-        ...imageState,
-        ...{ [index]: { url: urlFor(projectsToShow[index].gifImage) } },
-      });
-    }
-    if (e.type === 'mouseleave') {
-      setPlayIcons({ ...playIcons, ...{ [index]: { state: true } } });
-      setImageState({
-        ...imageState,
-        ...{ [index]: { url: urlFor(projectsToShow[index].mainImage) } },
-      });
-    }
-  };
-
-  useEffect(() => {
-    sanityClient
-      .fetch(
-        `*[_type == "project"]{
-          title,
-          position,
-          liveUrl,
-          repoUrl,
-          summary,
-          skills,
-          mainImage,
-          gifImage
-        }`
-      )
-      .then((data) => setProjects(data.sort((a, b) => a.position - b.position)))
-      .catch(console.error);
-  }, []);
-
-  useEffect(() => {
-    if (projects) {
-      const firstThree = projects.slice(0, 3);
-      setProjectsToShow(showMore ? projects : firstThree);
-      setPlayIcons(projects.map(() => ({ state: true })));
-      setImageState(projects.map((data) => ({ url: urlFor(data.mainImage) })));
-    }
-  }, [showMore, projects]);
   return (
-    <Section ref={projectsRef}>
+    <Section>
       <img
-        src={TopPeak}
-        style={{ position: 'absolute', top: 0, width: '100%' }}
+        src={peak1}
         alt="wave"
+        style={{
+          position: "absolute",
+          top: 0,
+          width: "100%",
+        }}
       />
       <img
-        src={BottomPeak}
-        style={{ position: 'absolute', bottom: 0, width: '100%' }}
+        src={peak2}
         alt="wave"
-      />
-      <SectionTitle id="projects">Projects</SectionTitle>
-      <AnimatePresence>
-        {projectsToShow &&
-          inView &&
-          projectsToShow.map(
-            ({ title, liveUrl, repoUrl, summary, skills }, i) => (
-              <ProjectContainer
-                id={i}
-                key={i}
-                onMouseLeave={(e) => changeImage(e, i)}
-                as={motion.div}
-                {...motionProps}
-              >
-                <PreviewContainer>
-                  <PlayBtn
-                    onClick={(e) => changeImage(e, i)}
-                    display={playIcons[i].state ? 'block' : 'none'}
-                  />
-                  <Preview
-                    src={imageState[i].url}
-                    alt={`preview of ${title}`}
-                  />
-                </PreviewContainer>
-                <ProjectDetails>
-                  <ProjectTitle>{title}</ProjectTitle>
-                  <SkillsContainer>
-                    {skills.map((skill, i) => (
-                      <Skill key={i}>{skill}</Skill>
-                    ))}
-                  </SkillsContainer>
-                  <Summary>{summary}</Summary>
-                  <Buttons>
-                    <Link target="_blank" rel="noopener" href={liveUrl}>
-                      Live Demo
-                    </Link>
-                    <Link target="_blank" rel="noopener" href={repoUrl}>
-                      Github
-                    </Link>
-                  </Buttons>
-                </ProjectDetails>
-                <LineBreak />
-              </ProjectContainer>
-            )
-          )}
-      </AnimatePresence>
-      {showMore ? (
-        <ShowContainer onClick={() => setShowMore(!showMore)} href="#2">
-          Show Less
-          <FaArrowUp size="2em" />
-        </ShowContainer>
-      ) : (
-        <ShowContainer onClick={() => setShowMore(!showMore)} href="#0">
-          Show All
-          <FaArrowDown size="2em" />
-        </ShowContainer>
-      )}
+        style={{ position: "absolute", bottom: "0px", width: "100%" }}
+      ></img>
+      <SectionTitle>Projects</SectionTitle>
+      <ProjectContainer>
+        <PreviewContainer>
+          <Preview src={iTravelImage} alt="Image Alt Text" />
+        </PreviewContainer>
+        <ProjectDetails>
+          <ProjectTitle>Al Hamra Inn</ProjectTitle>
+          <SkillsContainer>
+            <Skill>React</Skill>
+            <Skill>React Query</Skill>
+            <Skill>Styled Component</Skill>
+            <Skill>Javascript</Skill>
+            <Skill>React Router Dom</Skill>
+            <Skill>Supabase</Skill>
+          </SkillsContainer>
+          <Summary>
+            A hotel management web application designed for clients and
+            employee. It keeps track of check in and check out time, duration of
+            stay. Employees can update cabins and many interesting features.
+          </Summary>
+          <Buttons>
+            <Link
+              href="https://i-travel.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Live Demo
+            </Link>
+          </Buttons>
+        </ProjectDetails>
+        <LineBreak />
+      </ProjectContainer>
+      <ProjectContainer>
+        <PreviewContainer>
+          <Preview src={alHamra} alt="Image Alt Text" />
+        </PreviewContainer>
+        <ProjectTitle>iTravel</ProjectTitle>
+        <ProjectDetails>
+          <SkillsContainer>
+            <Skill>React</Skill>
+            <Skill>Context API</Skill>
+            <Skill>CSS modules</Skill>
+            <Skill>Javascript</Skill>
+            <Skill>React Router Dom</Skill>
+            <Skill>Leaflet Library</Skill>
+          </SkillsContainer>
+          <Summary>
+            A web application designed for users to log and manage their visited
+            locations, showcasing features like routing, the React Context API,
+            and integration with the Leaflet library, geolocation tracking and
+            many more
+          </Summary>
+          <Buttons>
+            <Link
+              href="https://al-hamra-inn.vercel.app/login"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Live Demo
+            </Link>
+          </Buttons>
+        </ProjectDetails>
+        <LineBreak />
+      </ProjectContainer>
     </Section>
   );
 };
-
 export default Projects;

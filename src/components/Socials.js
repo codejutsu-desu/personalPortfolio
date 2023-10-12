@@ -70,7 +70,7 @@ const Socials = () => {
       </Link>
       <Link target="_blank" rel="noopener" href="NA">
         <TwitterIcon size="1em" height="1em" />
-        Twitter
+        Facebook
       </Link>
       <Link
         target="_blank"

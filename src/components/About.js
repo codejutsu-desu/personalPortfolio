@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import { device } from '../globalHelpers';
-import BottomWave from '../assets/wave2.svg';
-import IconsAboutMe from './IconsAboutMe/index';
+import React from "react";
+import styled from "styled-components";
+import { device } from "../globalHelpers";
+import BottomWave from "../assets/wave2.svg";
+import IconsAboutMe from "./IconsAboutMe/index";
 
 const Section = styled.div`
   height: calc(100vh + 211px);
@@ -47,20 +47,20 @@ const About = () => {
     <Section>
       <img
         src={BottomWave}
-        style={{ position: 'absolute', bottom: 0, width: '100%' }}
+        style={{ position: "absolute", bottom: 0, width: "100%" }}
         alt="wave"
       />
       <Title id="about">About Me</Title>
       <AboutMeContent>
         <Summary>
-          I recently got married on Sept 25th, 2021 to my wife Brooke. I am
-          currently working at home with my two pets Zander (bossy-cat) and
-          Bandit (dog). Each icon surrounding represents a hobby or something
-          that I treasure.
+          An Arabic language, Qur'an and computer enthusiast who is committed to
+          continuous personal and professional growth, with a strong emphasis on
+          learning and staying current in the ever-evolving tech landscape.
           <br />
-          <br /> My working career involves a lot of customer service mostly
-          within the insurance realm of medical and dental. I am friendly and
-          easy to work with. I guarantee your team and clients will love me!
+          <br /> I Possess excellent collaborative, analytical, and creative
+          skills along with my Full Stack Web Development Expertise. I am
+          proficient in JavaScript technology stacks. I am friendly and easy to
+          work with. I guarantee your team and clients will love me!
           <br />
           <br />I spend most of my free time working on personal projects with a
           lineup of interesting applications I want to create. I am a

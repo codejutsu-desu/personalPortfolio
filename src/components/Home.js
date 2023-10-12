@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { device } from "../globalHelpers";
 import { motion } from "framer-motion";
 import Socials from "./Socials";
-import BackgroundImage from "../assets/backgroundimage.svg";
+import SvgComponent from "../assets/backgroundimage";
 
 const Section = styled.div`
   position: relative;
@@ -138,7 +138,16 @@ const Home = () => {
   };
   return (
     <Section id="home">
-      <Background src={BackgroundImage} alt="Wavy blue green background" />
+      {/* <Background src={backgroundSvg} alt="Wavy blue green background" /> */}
+      <SvgComponent
+        style={{
+          position: "absolute",
+          bottom: 0,
+          width: "100vw",
+          minWidth: "280px",
+          zIndex: -1,
+        }}
+      />
       <Socials />
       <HomeContent
         as={motion.div}
@@ -148,7 +157,7 @@ const Home = () => {
       >
         <TitleContainer>
           <Intro>Hi, my name is</Intro>
-          <Name>Mrimmoy Haque Shimanto.</Name>
+          <Name>MH Shimanto.</Name>
         </TitleContainer>
         <Tagline>
           Front end focused full stack developer with a critical thinking

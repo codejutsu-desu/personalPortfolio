@@ -1,22 +1,22 @@
-import React from 'react';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import { device } from '../globalHelpers';
-import { useInView } from 'react-intersection-observer';
-import { FaJsSquare, FaReact, FaSass } from 'react-icons/fa';
+import React from "react";
+import styled from "styled-components";
+import { motion } from "framer-motion";
+import { device } from "../globalHelpers";
+import { useInView } from "react-intersection-observer";
+import { FaJsSquare, FaReact, FaSass } from "react-icons/fa";
 import {
   SiStyledcomponents,
   SiTailwindcss,
   SiJest,
   SiNodedotjs,
   SiMongodb,
-} from 'react-icons/si';
-import css3 from '../assets/css3.webp';
-import firebase from '../assets/firebase.webp';
-import git from '../assets/git.webp';
-import html5 from '../assets/html5.webp';
-import nodejs from '../assets/nodejs.svg';
-import webpack from '../assets/webpack.webp';
+} from "react-icons/si";
+import css3 from "../assets/css3.webp";
+import supabase from "../assets/supabase.png";
+import git from "../assets/git.webp";
+import html5 from "../assets/html5.webp";
+import nodejs from "../assets/nodejs.svg";
+import webpack from "../assets/webpack.webp";
 
 const Section = styled.div`
   min-height: 640px;
@@ -197,25 +197,25 @@ const Skills = () => {
 
   const titleVariant = {
     hidden: {
-      x: '-100px',
+      x: "-100px",
       opacity: 0,
     },
     visible: {
       x: 0,
       opacity: 1,
       transition: {
-        type: 'spring',
+        type: "spring",
         damping: 13,
         stiffness: 50,
         duration: 1,
-        when: 'beforeChildren',
+        when: "beforeChildren",
         staggerChildren: 0.2,
       },
     },
   };
   const iconVariant = {
     hidden: {
-      x: '-100px',
+      x: "-100px",
       opacity: 0,
     },
     visible: {
@@ -233,7 +233,7 @@ const Skills = () => {
           as={motion.div}
           variants={titleVariant}
           initial="hidden"
-          animate={inViewSkill1 ? 'visible' : 'hidden'}
+          animate={inViewSkill1 ? "visible" : "hidden"}
         >
           <Heading>Front End</Heading>
           <SkillsContainer>
@@ -251,7 +251,7 @@ const Skills = () => {
             </Skill>
             <Skill as={motion.li} variants={iconVariant}>
               <ReactIcon alt="React logo" />
-              React & {''} <br></br> React-Native
+              ReactJS
             </Skill>
             <Skill as={motion.li} variants={iconVariant}>
               <StyledComponentIcon alt="Styled-Components logo" />
@@ -277,7 +277,7 @@ const Skills = () => {
           as={motion.div}
           variants={titleVariant}
           initial="hidden"
-          animate={inViewSkill2 ? 'visible' : 'hidden'}
+          animate={inViewSkill2 ? "visible" : "hidden"}
         >
           <Heading>Tools</Heading>
           <SkillsContainer>
@@ -297,7 +297,7 @@ const Skills = () => {
           as={motion.div}
           variants={titleVariant}
           initial="hidden"
-          animate={inViewSkill3 ? 'visible' : 'hidden'}
+          animate={inViewSkill3 ? "visible" : "hidden"}
         >
           <Heading>Back End</Heading>
           <SkillsContainer>
@@ -306,8 +306,8 @@ const Skills = () => {
               Node.js
             </Skill>
             <Skill as={motion.li} variants={iconVariant}>
-              <FirebaseIcon src={firebase} alt="firebase logo" />
-              Firebase
+              <FirebaseIcon src={supabase} alt="supabase logo" />
+              Supabase
             </Skill>
             <Skill as={motion.li} variants={iconVariant}>
               <ExpressIcon alt="Expressjs logo" />
