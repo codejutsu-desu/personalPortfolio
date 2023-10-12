@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { device } from "../globalHelpers";
 
-const apiEndpoint = process.env.REACT_APP_API_ENDPOINT;
+const apiEndpoint =
+  "https://shimanto-portfolio-33qjgmacn-codejutsu-desu.vercel.app";
 const apiURL = `${apiEndpoint}/api/sendEmail`;
 
 const Section = styled.div`
