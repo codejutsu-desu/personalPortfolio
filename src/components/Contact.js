@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { device } from "../globalHelpers";
 
+const apiEndpoint = process.env.REACT_APP_API_ENDPOINT;
+const apiURL = `${apiEndpoint}/api/sendEmail`;
+
 const Section = styled.div`
   height: 90vh;
   position: relative;
@@ -127,7 +130,7 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("/api/sendEmail", {
+      const response = await fetch(apiURL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

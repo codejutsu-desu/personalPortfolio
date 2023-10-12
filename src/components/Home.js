@@ -26,13 +26,7 @@ const Section = styled.div`
     font-size: clamp(1rem, 8vw, 4rem);
   }
 `;
-const Background = styled.img`
-  position: absolute;
-  bottom: 0;
-  width: 100vw;
-  min-width: 280px;
-  z-index: -1;
-`;
+
 const HomeContent = styled.div`
   margin: 0 2em;
 `;
