@@ -5,8 +5,10 @@ const sendEmailHandler = async (req, res) => {
     // Set the CORS headers to allow requests from your frontend
     res.setHeader(
       "Access-Control-Allow-Origin",
-      "https://shimanto-portfolio.vercel.app"
-    ); // Replace with your frontend URL
+      "https://shimanto-portfolio-kabwt2cp1-codejutsu-desu.vercel.app"
+    );
+
+    // Replace with your frontend URL
     res.setHeader("Access-Control-Allow-Methods", "POST");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
