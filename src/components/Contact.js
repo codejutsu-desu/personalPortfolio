@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { device } from "../globalHelpers";
 
 const apiEndpoint =
-  "https://shimanto-portfolio-33qjgmacn-codejutsu-desu.vercel.app";
+  "https://shimanto-portfolio-ig4xrf85i-codejutsu-desu.vercel.app";
 const apiURL = `${apiEndpoint}/api/sendEmail`;
 
 const Section = styled.div`
