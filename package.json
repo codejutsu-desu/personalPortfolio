@@ -1,0 +1,51 @@
+{
+  "name": "shimanto-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@sanity/client": "^2.21.0",
+    "@sanity/image-url": "^1.0.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "framer-motion": "^4.1.17",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
+    "react-intersection-observer": "^8.32.2",
+    "react-scripts": "^5.0.1",
+    "react-tooltip": "^4.2.21",
+    "shuffle-array": "^1.0.1",
+    "styled-components": "^5.3.1",
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "description": "![MongoDB](https://img.shields.io/badge/-MongoDB-000?&logo=MongoDB&style=for-the-badge) ![Express](https://img.shields.io/badge/-Express-000?&logo=Express&style=for-the-badge) ![React](https://img.shields.io/badge/-React-000?&logo=React&style=for-the-badge) ![Node.js](https://img.shields.io/badge/-Node.js-000?&logo=node.js&style=for-the-badge) ![Javascript](https://img.shields.io/badge/-JavaScript-000?&logo=javascript&style=for-the-badge) ![Git](https://img.shields.io/badge/-Git-000?&logo=git&style=for-the-badge) ![Jest](https://img.shields.io/badge/-Jest-000?&logo=jest&style=for-the-badge) ![HTML5](https://img.shields.io/badge/-Html5-000?&logo=html5&style=for-the-badge) ![CSS3](https://img.shields.io/badge/-Css3-000?&logo=css3&style=for-the-badge) ![TailwindCSS](https://img.shields.io/badge/-TailwindCSS-000?&logo=tailwindcss&style=for-the-badge) ![StyledComponents](https://img.shields.io/badge/-StyledComponents-000?&logo=styledcomponents&style=for-the-badge) ![Sass](https://img.shields.io/badge/-Sass-000?&logo=Sass&style=for-the-badge) ![Webpack](https://img.shields.io/badge/-Webpack-000?&logo=webpack&style=for-the-badge) ![Firebase](https://img.shields.io/badge/-Firebase-000?&logo=firebase&style=for-the-badge)",
+  "main": "index.js",
+  "devDependencies": {},
+  "author": "shimanto",
+  "license": "ISC"
+}
