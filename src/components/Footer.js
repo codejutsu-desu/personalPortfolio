@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { FaArrowUp } from 'react-icons/fa';
+import React from "react";
+import styled from "styled-components";
+import { FaArrowUp } from "react-icons/fa";
 
 const FooterContent = styled.div`
   background-color: #022949;
@@ -46,7 +46,7 @@ const Footer = () => {
         <Icon size="2rem" />
         Back to top
       </a>
-      <Text>Designed & Built by Timothy Jackson</Text>
+      <Text>Designed & Built by MH Shimanto</Text>
     </FooterContent>
   );
 };

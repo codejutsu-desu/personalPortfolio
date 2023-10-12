@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { device } from '../globalHelpers';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { device } from "../globalHelpers";
 
 const Section = styled.div`
   height: 90vh;
@@ -117,16 +117,52 @@ const Submit = styled.input`
   }
 `;
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        alert("Email sent successfully");
+      } else {
+        alert("Email sending failed");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred");
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
   return (
     <Section id="contact">
       <ContactMeContent>
         <SectionTitle>Contact Me</SectionTitle>
         <Text>
-          If you are interested in talking to me, I would love to hear from you.{' '}
+          If you are interested in talking to me, I would love to hear from you.{" "}
           <br></br>
           Please send me a message below and I will respond swiftly!
         </Text>
-        <FormContainer name="contact" method="POST">
+        <FormContainer name="contact" method="POST" onSubmit={handleSubmit}>
           <input type="hidden" name="form-name" value="contact" />
           <InputRow>
             <Name
@@ -134,6 +170,7 @@ const Contact = () => {
               name="name"
               id="name"
               placeholder="Name"
+              onChange={handleChange}
               required
             />
             <Email
@@ -141,6 +178,7 @@ const Contact = () => {
               name="email"
               id="email"
               placeholder="Email"
+              onChange={handleChange}
               required
             />
           </InputRow>
@@ -148,6 +186,7 @@ const Contact = () => {
             name="message"
             id="message"
             placeholder="Message"
+            onChange={handleChange}
             rows="7"
             required
           />
