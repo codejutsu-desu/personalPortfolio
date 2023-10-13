@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { device } from "../globalHelpers";
-
-const apiEndpoint =
-  "https://shimanto-portfolio-kabwt2cp1-codejutsu-desu.vercel.app";
-const apiURL = `${apiEndpoint}/api/sendEmail`;
+import emailjs from "emailjs-com";
 
 const Section = styled.div`
   height: 90vh;
@@ -130,23 +127,26 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch(apiURL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+    // Define your Email.js service ID, template ID, and user ID
+    const publicKey = "DSKtozpN-txU7j9kV";
+    const templateID = "template_wfo4hby";
+    const userID = "service_z0g7tbv";
 
-      if (response.ok) {
-        alert("Email sent successfully");
-      } else {
-        alert("Email sending failed");
-      }
+    // Prepare the email data
+    const emailData = {
+      to_name: "mrimmoys@gmail.com", // Replace with the recipient's name
+      from_name: formData.name, // The sender's name from the form
+      email: formData.email, // The sender's email from the form
+      message: formData.message, // The message from the form
+    };
+
+    try {
+      // Send the email
+      await emailjs.send(publicKey, templateID, emailData, userID);
+      alert("Email sent successfully!");
     } catch (error) {
-      console.error(error);
-      alert("An error occurred");
+      console.error("Email sending failed:", error);
+      alert("Email sending failed. Please try again.");
     }
   };
 
