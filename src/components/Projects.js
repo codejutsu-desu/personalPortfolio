@@ -148,7 +148,7 @@ const Projects = () => {
       <SectionTitle>Projects</SectionTitle>
       <ProjectContainer>
         <PreviewContainer>
-          <Preview src={iTravelImage} alt="Image Alt Text" />
+          <Preview src={alHamra} alt="Image Alt Text" />
         </PreviewContainer>
         <ProjectDetails>
           <ProjectTitle>Al Hamra Inn</ProjectTitle>
@@ -167,9 +167,9 @@ const Projects = () => {
           </Summary>
           <Buttons>
             <Link
-              href="https://i-travel.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
+              href="https://al-hamra-o95hb4w51-codejutsu-desu.vercel.app/"
             >
               Live Demo
             </Link>
@@ -179,10 +179,10 @@ const Projects = () => {
       </ProjectContainer>
       <ProjectContainer>
         <PreviewContainer>
-          <Preview src={alHamra} alt="Image Alt Text" />
+          <Preview src={iTravelImage} alt="Image Alt Text" />
         </PreviewContainer>
-        <ProjectTitle>iTravel</ProjectTitle>
         <ProjectDetails>
+          <ProjectTitle>iTravel</ProjectTitle>
           <SkillsContainer>
             <Skill>React</Skill>
             <Skill>Context API</Skill>
@@ -199,7 +199,7 @@ const Projects = () => {
           </Summary>
           <Buttons>
             <Link
-              href="https://al-hamra-inn.vercel.app/login"
+              href="https://i-travel.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
             >

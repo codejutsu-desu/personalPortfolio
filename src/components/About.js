@@ -64,7 +64,8 @@ const About = () => {
           <br />
           <br />I spend most of my free time working on personal projects with a
           lineup of interesting applications I want to create. I am a
-          self-taught developer that is creative and enjoys a challenge.
+          self-taught developer having credentials from several Udemy and IBM
+          certified Coursera courses.
         </Summary>
         <IconsAboutMe />
       </AboutMeContent>
