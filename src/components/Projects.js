@@ -169,7 +169,7 @@ const Projects = () => {
             <Link
               target="_blank"
               rel="noopener noreferrer"
-              href="https://al-hamra-o95hb4w51-codejutsu-desu.vercel.app/"
+              href="al-hamra-k4o46m9gs-codejutsu-desu.vercel.app"
             >
               Live Demo
             </Link>
