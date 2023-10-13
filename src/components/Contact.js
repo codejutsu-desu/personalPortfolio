@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { device } from "../globalHelpers";
 import emailjs from "emailjs-com";
+import toast, { Toaster } from "react-hot-toast";
 
 const Section = styled.div`
   height: 90vh;
@@ -118,6 +119,7 @@ const Submit = styled.input`
   }
 `;
 const Contact = () => {
+  const form = useRef();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -132,22 +134,24 @@ const Contact = () => {
     const templateID = "template_wfo4hby";
     const userID = "service_z0g7tbv";
 
-    // Prepare the email data
-    const emailData = {
-      to_name: "mrimmoys@gmail.com", // Replace with the recipient's name
-      from_name: formData.name, // The sender's name from the form
-      email: formData.email, // The sender's email from the form
-      message: formData.message, // The message from the form
-    };
-
-    try {
-      // Send the email
-      await emailjs.send(publicKey, templateID, emailData, userID);
-      alert("Email sent successfully!");
-    } catch (error) {
-      console.error("Email sending failed:", error);
-      alert("Email sending failed. Please try again.");
-    }
+    emailjs.sendForm(userID, templateID, form.current, publicKey).then(
+      (result) => {
+        console.log(result.text);
+        toast.success("Successfully sent your messages!", {
+          style: {
+            borderRadius: "5px",
+            padding: "8px 16px",
+          },
+        });
+        form.current.reset();
+      },
+      (error) => {
+        console.log(error.text);
+        toast.error(
+          "Failed to send the message, please try reaching from email/gitHub/linkedIn"
+        );
+      }
+    );
   };
 
   const handleChange = (e) => {
@@ -166,7 +170,12 @@ const Contact = () => {
           <br></br>
           Please send me a message below and I will respond swiftly!
         </Text>
-        <FormContainer name="contact" method="POST" onSubmit={handleSubmit}>
+        <FormContainer
+          ref={form}
+          name="contact"
+          method="POST"
+          onSubmit={handleSubmit}
+        >
           <input type="hidden" name="form-name" value="contact" />
           <InputRow>
             <Name
@@ -196,6 +205,7 @@ const Contact = () => {
           />
           <Submit type="submit" value="Send Message" />
         </FormContainer>
+        <Toaster />
       </ContactMeContent>
     </Section>
   );
