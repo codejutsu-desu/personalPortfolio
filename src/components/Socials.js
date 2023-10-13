@@ -68,7 +68,11 @@ const Socials = () => {
         <GithubIcon size="1em" height="1em" />
         Github
       </Link>
-      <Link target="_blank" rel="noopener" href="NA">
+      <Link
+        target="_blank"
+        rel="noopener"
+        href="https://www.facebook.com/mrinmoy.shimanto/"
+      >
         <TwitterIcon size="1em" height="1em" />
         Facebook
       </Link>
