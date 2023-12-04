@@ -5,6 +5,7 @@ import iTravelImage from "./iTravel.png";
 import alHamra from "./alHamra.png";
 import peak1 from "../assets/peak1.svg";
 import peak2 from "../assets/peak2.svg";
+import qd from "../assets/qd.png";
 
 const Section = styled.div`
   position: relative;
@@ -170,6 +171,38 @@ const Projects = () => {
               target="_blank"
               rel="noopener noreferrer"
               href="https://al-hamra-inn.vercel.app/"
+            >
+              Live Demo
+            </Link>
+          </Buttons>
+        </ProjectDetails>
+        <LineBreak />
+      </ProjectContainer>
+      <ProjectContainer>
+        <PreviewContainer>
+          <Preview src={qd} alt="Image Alt Text" />
+        </PreviewContainer>
+        <ProjectDetails>
+          <ProjectTitle>Qur'an-Dreamers</ProjectTitle>
+          <SkillsContainer>
+            <Skill>React</Skill>
+            <Skill>Tailwind</Skill>
+            <Skill>CSS Modules</Skill>
+            <Skill>Javascript</Skill>
+            <Skill>React Router Dom</Skill>
+            <Skill>Python and Django</Skill>
+          </SkillsContainer>
+          <Summary>
+            Single Handedly dealing with the front end of this educational
+            platform used by thousands of users around the globe to learn the
+            Arabic Language. The page is yet to be responsive in mobile and
+            other screen.
+          </Summary>
+          <Buttons>
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              href="http://www.qurandreamers.com"
             >
               Live Demo
             </Link>
