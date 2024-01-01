@@ -79,7 +79,7 @@ const Socials = () => {
       <Link
         target="_blank"
         rel="noopener"
-        href="https://drive.google.com/file/d/1TpPMU7si1P8RH-0nEV5bU14PMJSLo7LB/view?usp=sharing"
+        href="https://drive.google.com/file/d/1dxbivf9ywHdJWan7zh0pW81oDEDRyGf0/view?usp=sharing"
       >
         <FaFilePdf size="1em" color="#272341" />
         Resume
